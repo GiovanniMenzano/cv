@@ -1,0 +1,190 @@
+%!TEX TS-program = xelatex
+%!TEX encoding = UTF-8 Unicode
+
+%%% CONFIGURATION %%%
+\documentclass[]{style}
+\usepackage{textcomp}
+%%% Override a directory location for fonts(default: 'fonts/')
+\fontdir[fonts/]
+
+%%% Configure a directory location for sections
+\newcommand*{\sectiondir}{resume/}
+
+%%% Override color
+% Awesome Colors: awesome-emerald, awesome-skyblue, awesome-red, awesome-pink, awesome-orange, awesome-nephritis, awesome-concrete, awesome-darknight
+%% Color for highlight
+% Define your custom color if you don't like awesome colors
+\colorlet{awesome}{awesome-red}
+%\definecolor{awesome}{HTML}{242424}
+%% Colors for text
+%\definecolor{darktext}{HTML}{414141}
+%\definecolor{text}{HTML}{414141}
+%\definecolor{graytext}{HTML}{414141}
+%\definecolor{lighttext}{HTML}{414141}
+
+%%% Override a separator for social informations in header(default: ' | ')
+%\headersocialsep[\quad\textbar\quad]
+    \begin{document}
+
+%%% PROFILE %%%
+\begin{center}
+	\headerfirstnamestyle{Giovanni} \headerlastnamestyle{Menzano} \\
+	\vspace{2mm}
+	\headerinfostyle{{\faEnvelope\space\space GIOVANNI.MENZANO@GMAIL.COM}\space\space\space |\space\space\space {\faMapMarker\space CROTONE, KR}}
+\end{center}
+
+%%% EXPERIENCE %%%
+\cvsection{Work experience}
+\begin{cventries}
+	\cventry
+	{Software developer}
+	{IBM}
+	{Crotone, KR}
+	{October 2021 – present}
+	{\begin{cventryparagraph}
+		\item {Project Istat AIC - Applications in cloud.}
+		\item {Management and development of a pool of 40 applications used by Istat, italian municipalities and companies for many activities, such as: publish statistic data, analyze and organize informations, fill questionnaires and many more. Activities can be divided in 3 categories:}
+    	{\begin{cventryparagraphlist}
+    		\item {Resolve production incidents reported by Istat employees;}
+    		\item {organize and complete application activities organized throughout the year, like data upload, user authorization to certain application and functions, database and server management;}
+    		\item {change requests and fixes.}
+    	\end{cventryparagraphlist}}
+	\end{cventryparagraph}}
+	\cventry
+	{Software Developer}
+	{NTT Data}
+	{Rende, CS}
+	{April 2020 – September 2021}
+	{\begin{cventryparagraph}
+		\item {Project Enel-x DBE (Digital Backend).}
+		\item {Software written in Java, using Spring framework, REST services and a microservices architecture. Data persistence made with Hibernate on a PostgreSQL database. Employed as analyst on AMS activities, that include bug analysis and fix, backoffice service requests and production incident mamagement. Key responsibilities:}
+    	{\begin{cventryparagraphlist}
+    		\item {log analysis through AWS Cloudwatch;}
+    		\item {data extraction and data cleaning on database;}
+    		\item {on-call service, for monitoring requests, microservices health check and reboot if needed;}
+    		\item {client management and communication;}
+    		\item {AMS team activities management and coaching of new employees in the same position.}
+    	\end{cventryparagraphlist}}
+	\end{cventryparagraph}}
+	\cventry
+	{Software Developer}
+	{Exprivia}
+	{Rende, CS}
+	{September 2019 – March 2020}
+	{\begin{cventryparagraph}
+		\item {Project SISR (Sistema Informativo Sanitario Regionale).}
+		\item {Developed in Java, with the use of EJB technology, and Oracle as database. This project was initially made specifically for the Puglia region, our goal is to export and adapt the source code for Calabria requirements. Activities include:}
+    	{\begin{cventryparagraphlist}
+    		\item {porting and adaptation of functions and libraries used;}
+    		\item {porting and testing of Oracle roles and other configuration data;}
+    		\item {developing new functions for the region needs.}
+    	\end{cventryparagraphlist}}
+	\end{cventryparagraph}}
+	\cventry
+	{Full stack developer}
+	{Consoft/Reply}
+	{Milano, MI}
+	{December 2018 – August 2019}
+	{\begin{cventryparagraph}
+		\item {Project UnipolSai Contest.}
+		\item {Web application used to visualize the progress of prize competitions and production awards by Unipol agencies. Project developed in Java with Spring Framework, using REST api. Frontend built in HTML/CSS/JS with the help of Dojo toolkit. The software uses Mybatis framework and a DB2 database.
+		The team consists of me, as a developer in charge of frontend and backend developments, and the team leader essentially responsible for project management. Main tasks:}
+    	{\begin{cventryparagraphlist}
+    		\item {build queries for retrieving data from database;}
+    		\item {development and rework of REST services;}
+    		\item {development and rework of Dojo widgets that were used to display charts and leaderboards;}
+    		\item {creation of pages on Websphere Portal;}
+    		\item {run tests and data mocks;}
+    		\item {deploy in development and testing environments.}
+    	\end{cventryparagraphlist}}
+	\end{cventryparagraph}}
+\end{cventries}
+\pagebreak[4]
+
+%%% EDUCATION %%%
+\cvsection{Education}
+\begin{cventries}
+	\cventry
+	{Computer Science}
+	{Università della Calabria}
+	{Rende, CS}
+	{2011 – on hold}
+	{}
+	\cventry
+	{Science}
+	{Liceo Scientifico Filolao}
+	{Crotone, KR}
+	{2006 – 2011}
+	{}
+\end{cventries}
+
+%%% SKILLS %%%
+\cvsection{Skills}
+\begin{cventries}
+	\cvskillentry
+	{Languages}
+	{\begin{cventryparagraph}
+		\item {Java, HTML, CSS, Javascript, C (Arduino), SQL.}
+	\end{cventryparagraph}}
+	
+	\cvskillentry
+	{Framework and libraries}
+	{\begin{cventryparagraph}
+		\item {Spring, REST API, Maven, Hibernate, MyBatis, Dojo, Highcharts, Owl Carousel.}
+	\end{cventryparagraph}}
+	
+	\cvskillentry
+	{Tools}
+	{\begin{cventryparagraph}
+		\item {GIT, SVN, Postman, Fiddler, Tomcat, WebSphere Portal, Eclipse, Netbeans, Visual Studio Code, AWS Cloudwatch, Office Suite, Trello.}
+	\end{cventryparagraph}}
+	
+	\cvskillentry
+	{English}
+	{\begin{cventryparagraph}
+		\item {Good knowledge acquired during university and work projects where I could take part in meetings with international clients.}
+		\item {I also got a valuable help from online gaming, especially through direct practice. When meeting players from many different countries, being able to communicate and understand each other is necessary for successful teamwork.}
+	\end{cventryparagraph}}
+	
+	\cvskillentry
+	{Teamwork and communication}
+	{\begin{cventryparagraph}
+		\item {Ability to adapt to team protocols and methodologies, whether agile or waterfall;}
+		\item {capacity to provide and receive constructive feedback;}
+		\item {ability to recognize priorities and organize activities accordingly.}
+	\end{cventryparagraph}}
+\end{cventries}
+
+%%% CERTIFICATIONS %%%
+\cvsection{Certifications}
+\begin{cvhonors}
+	\cvhonor
+	{Oracle Certified Associate}
+	{}
+	{Oracle}
+	{December 2021}
+	\cvhonor
+	{Java Enterprise course}
+	{}
+	{Consoft}
+	{November 2019}
+	\cvhonor
+	{ECDL Core certification}
+	{}
+	{AICA}
+	{November 2009}
+\end{cvhonors}
+
+%%% PRIVACY %%%
+\makecvfooter
+{{\def\arraystretch{1.15}{\begin{tabular}{ l l }
+		Notes  & { Enrolled in the protected categories, Italian Law 68/99. } \\
+		Privacy policy  & { I authorize the processing of the personal data contained in my curriculum vitae in accordance with the } \\
+		& { Italian Legislative Decree 196/2003, integrated with the amendments introduced by the Italian Legislative Decree 101/2018, } \\
+		& { and art. 13 of the GDPR (EU Regulation 2016/679) for evaluation and hiring purposes. } \\
+		\end{tabular}}}}
+{}
+{}
+
+\
+\end{document}

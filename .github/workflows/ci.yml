@@ -1,0 +1,97 @@
+name: Build LaTeX document
+on:
+  push:
+    branches: [ "main" ]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up git repository
+        uses: actions/checkout@v3
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: "*.tex"
+          glob_root_file: true
+          latexmk_use_xelatex: true
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: pdf
+          path: ./*.pdf
+          retention-days: 3
+          
+      - name: Get time
+        id: time
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 1
+          format: 'YYYY.MM.DD.HH.mm.ss'
+      - name: Get date
+        id: date
+        uses: nanzm/get-time-action@v1.1
+        with:
+          timeZone: 1
+          format: 'YYYY-MM-DD'
+          
+      - name: Create release
+        id: create_release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: cv compiled on ${{ steps.date.outputs.time }}
+          tag_name: v${{ steps.time.outputs.time }}
+          files: ./*.pdf
+      # upload-release-asset not needed anymore, create release and upload is done with action-gh-release
+      # - name: Upload release asset
+        # id: upload-release-asset
+        # uses: actions/upload-release-asset@v1
+        # env:
+          # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        # with:
+          # upload_url: ${{ steps.create_release.outputs.upload_url }}
+          # asset_path: ./cv.pdf
+          # asset_name:  cv_${{ steps.date.outputs.time }}.pdf
+          # asset_content_type: application/pdf
+          
+      - name: Install ghostscript
+        run: sudo apt-get update --fix-missing && sudo apt install ghostscript
+      - name: Change ImageMagick security policy
+        run: |
+          DQT='"' 
+          SRC="rights=${DQT}none${DQT} pattern=${DQT}PDF${DQT}"
+          RPL="rights=${DQT}read\|write${DQT} pattern=${DQT}PDF${DQT}"
+          
+          HGT="name=${DQT}height${DQT} value=${DQT}10KP${DQT}"
+          HGTR="name=${DQT}height${DQT} value=${DQT}128Kp${DQT}"
+          
+          WDT="name=${DQT}width${DQT} value=${DQT}10KP${DQT}"
+          WDTR="name=${DQT}width${DQT} value=${DQT}128Kp${DQT}"
+          
+          MAP="name=${DQT}map${DQT} value=${DQT}512MiB${DQT}"
+          MAPR="name=${DQT}map${DQT} value=${DQT}4GiB${DQT}"
+          
+          MEM="name=${DQT}memory${DQT} value=${DQT}256MiB${DQT}"
+          MEMR="name=${DQT}memory${DQT} value=${DQT}2GiB${DQT}"
+          
+          sudo sed -i "s/$SRC/$RPL/" /etc/ImageMagick-6/policy.xml
+          sudo sed -i "s/$HGT/$HGTR/" /etc/ImageMagick-6/policy.xml
+          sudo sed -i "s/$WDT/$WDTR/" /etc/ImageMagick-6/policy.xml
+          sudo sed -i "s/$MAP/$MAPR/" /etc/ImageMagick-6/policy.xml
+          sudo sed -i "s/$MEM/$MEMR/" /etc/ImageMagick-6/policy.xml
+          
+      - name: Convert pdf to png
+        run: convert -density 900 -background white -alpha off cv_en.pdf -resize 25% -quality 90 -colorspace RGB cv_preview_%d.png
+        
+      - name: Commit png
+        id: commit
+        run: |
+          git config --local user.email "action[bot]@github.com"
+          git config --local user.name "github-actions[bot]"
+          git add *.png
+          git commit -m "[bot] updated preview images."
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+          
