@@ -33,6 +33,9 @@
 	\headerinfostyle{{\faEnvelope\space\space GIOVANNI.MENZANO@GMAIL.COM}\space\space\space |\space\space\space {\faMapMarker\space CROTONE, KR}}
 \end{center}
 
+\cvsection{Profile}
+\descriptionstyle{Software developer working since 2018 on Java backends, REST APIs and microservices. My work also covers OpenShift deployments and CI/CD pipelines, on projects in public administration, healthcare, energy and insurance.}
+
 %%% EXPERIENCE %%%
 \cvsection{Work experience}
 \begin{cventries}
@@ -40,83 +43,90 @@
 	{Software developer}
 	{IBM}
 	{Crotone, KR}
-	{October 2021 – present}
+	{Oct 2021 -- present}
 	{\begin{cventryparagraph}
-		\item {Project Istat AIC - Applications in cloud.}
-		\item {Management and development of a pool of 40 applications used by Istat, italian municipalities and companies for many activities, such as: publish statistic data, analyze and organize informations, fill questionnaires and many more. Activities can be divided in 3 categories:}
+		\item {\cvprojectheading{FSE 2.0 / DEMA}{Feb 2026 -- present}}
+		\item {DevOps activities across the Electronic Health Record 2.0 (FSE 2.0) programme and the Electronic Prescription project (DEMA). Creation of GitOps repositories for deployment manifests, creation and automation of Azure DevOps pipelines, and configuration and management of microservice deployments on OpenShift across test, validation and production environments using Helm and Kustomize. Work on routes, certificates, secrets, health probes and resources.}
+		\item {\cvprojectheading{RGS PLAI}{May 2025 -- Jan 2026}}
+		\item {Backend development of the Italian State General Accounting Department's document ingestion platform, based on Spring Boot microservices, Kafka, Oracle DB and S3. Development and refactoring of document ingestion microservices, with shared workflows for data consistency and recovery of missing documents. Developed unit test suites. The project won the 2025 Digital Agenda Award in the Digital Agenda Implementation category.}
+		\item {\cvprojectheading{ADM Otello and Dashboard}{Oct 2023 -- Apr 2025}}
+		\item {Reengineering of the travellers' application with Java/Spring microservices, with main responsibility for user management and authentication and for changes to the customs officers' legacy system. Unit and integration testing, SonarQube analysis and agile teamwork. Development of ADM Dashboard for customs systems monitoring, with REST APIs, scheduled data collection and centralized configuration, using Spring Boot and MongoDB.}
+		\item {\cvprojectheading{Istat AIC and SIRIM}{Oct 2021 -- Sep 2023}}
+		\item {Maintenance and development of a portfolio of 40 applications used by Istat, municipalities and companies. Management of production incidents, recurring operations on data, access permissions, databases and servers, and change requests. Main contributions to SIRIM, the service for microdata requests and related GDPR approvals:}
     	{\begin{cventryparagraphlist}
-    		\item {Resolve production incidents reported by Istat employees;}
-    		\item {organize and complete application activities organized throughout the year, like data upload, user authorization to certain application and functions, database and server management;}
-    		\item {change requests and fixes.}
+    		\item {login implementation using the client's LDAP services;}
+    		\item {generation of dynamic PDFs configured through database metadata;}
+    		\item {refactoring of roles and permissions management;}
+    		\item {knowledge transfer to the incoming team through hands-on support and operational guides.}
     	\end{cventryparagraphlist}}
 	\end{cventryparagraph}}
 	\cventry
 	{Software Developer}
 	{NTT Data}
 	{Rende, CS}
-	{April 2020 – September 2021}
+	{Apr 2020 -- Sep 2021}
 	{\begin{cventryparagraph}
-		\item {Project Enel-x DBE (Digital Backend).}
-		\item {Software written in Java, using Spring framework, REST services and a microservices architecture. Data persistence made with Hibernate on a PostgreSQL database. Employed as analyst on AMS activities, that include bug analysis and fix, backoffice service requests and production incident mamagement. Key responsibilities:}
-    	{\begin{cventryparagraphlist}
-    		\item {log analysis through AWS Cloudwatch;}
-    		\item {data extraction and data cleaning on database;}
-    		\item {on-call service, for monitoring requests, microservices health check and reboot if needed;}
-    		\item {client management and communication;}
-    		\item {AMS team activities management and coaching of new employees in the same position.}
-    	\end{cventryparagraphlist}}
+		\item {\cvprojectheading{Enel X DBE}{}}
+		\item {Development and maintenance of the electric vehicle charging platform's middleware, built with Java/Spring microservices on AWS.}
+		\item {Bug analysis and resolution, CloudWatch monitoring, PostgreSQL/Hibernate data management and on-call support for production incidents.}
+		\item {Coordination of AMS activities, client communication and onboarding of new colleagues.}
 	\end{cventryparagraph}}
 	\cventry
 	{Software Developer}
 	{Exprivia}
 	{Rende, CS}
-	{September 2019 – March 2020}
+	{Sep 2019 -- Mar 2020}
 	{\begin{cventryparagraph}
-		\item {Project SISR (Sistema Informativo Sanitario Regionale).}
-		\item {Developed in Java, with the use of EJB technology, and Oracle as database. This project was initially made specifically for the Puglia region, our goal is to export and adapt the source code for Calabria requirements. Activities include:}
-    	{\begin{cventryparagraphlist}
-    		\item {porting and adaptation of functions and libraries used;}
-    		\item {porting and testing of Oracle roles and other configuration data;}
-    		\item {developing new functions for the region needs.}
-    	\end{cventryparagraphlist}}
+		\item {\cvprojectheading{SISR Edotto}{}}
+		\item {Porting and adaptation of a Java application for the regional healthcare system to a different regulatory context. Monolithic architecture with EJB services and a JSP interface.}
+		\item {Updates to functions and libraries, Oracle roles and configuration, testing and development of new features.}
 	\end{cventryparagraph}}
 	\cventry
 	{Full stack developer}
 	{Consoft/Reply}
 	{Milano, MI}
-	{December 2018 – August 2019}
+	{Dec 2018 -- Aug 2019}
 	{\begin{cventryparagraph}
-		\item {Project UnipolSai Contest.}
-		\item {Web application used to visualize the progress of prize competitions and production awards by Unipol agencies. Project developed in Java with Spring Framework, using REST api. Frontend built in HTML/CSS/JS with the help of Dojo toolkit. The software uses Mybatis framework and a DB2 database.
-		The team consists of me, as a developer in charge of frontend and backend developments, and the team leader essentially responsible for project management. Main tasks:}
-    	{\begin{cventryparagraphlist}
-    		\item {build queries for retrieving data from database;}
-    		\item {development and rework of REST services;}
-    		\item {development and rework of Dojo widgets that were used to display charts and leaderboards;}
-    		\item {creation of pages on Websphere Portal;}
-    		\item {run tests and data mocks;}
-    		\item {deploy in development and testing environments.}
-    	\end{cventryparagraphlist}}
+		\item {\cvprojectheading{UnipolSai Contest}{}}
+		\item {Development of Java/Spring REST services and MyBatis persistence on DB2 for the sales network's prize contest platform.}
+		\item {Minor frontend enhancements with Dojo, pages on WebSphere Portal, testing and deployments to development and testing environments.}
 	\end{cventryparagraph}}
 \end{cventries}
-\pagebreak[4]
 
-%%% EDUCATION %%%
-\cvsection{Education}
-\begin{cventries}
-	\cventry
-	{Computer Science}
-	{Università della Calabria}
-	{Rende, CS}
-	{2011 – on hold}
+%%% EDUCATION AND CERTIFICATIONS %%%
+\cvsection{Education and certifications}
+\begin{cvhonors}
+	\cvhonor
+	{AWS Certified Developer – Associate}
 	{}
-	\cventry
-	{Science}
+	{AWS}
+	{2024}
+	\cvhonor
+	{AWS Certified Cloud Practitioner}
+	{}
+	{AWS}
+	{2022}
+	\cvhonor
+	{Oracle Certified Associate, Java SE 8 Programmer}
+	{}
+	{Oracle}
+	{2021}
+	\cvhonor
+	{Java Enterprise course}
+	{}
+	{Consoft}
+	{2018}
+	\cvhonor
+	{Scientific high school diploma}
+	{}
 	{Liceo Scientifico Filolao}
-	{Crotone, KR}
-	{2006 – 2011}
+	{2011}
+	\cvhonor
+	{ECDL Core certification}
 	{}
-\end{cventries}
+	{AICA}
+	{2009}
+\end{cvhonors}
 
 %%% SKILLS %%%
 \cvsection{Skills}
@@ -124,61 +134,39 @@
 	\cvskillentry
 	{Languages}
 	{\begin{cventryparagraph}
-		\item {Java, HTML, CSS, Javascript, C (Arduino), SQL.}
+		\item {Java, HTML, CSS, JavaScript, C (Arduino), SQL.}
 	\end{cventryparagraph}}
 	
 	\cvskillentry
-	{Framework and libraries}
+	{Frameworks and libraries}
 	{\begin{cventryparagraph}
-		\item {Spring, REST API, Maven, Hibernate, MyBatis, Dojo, Highcharts, Owl Carousel.}
+		\item {Spring, Spring Boot, REST API, Hibernate, JPA, MyBatis, Kafka, JUnit 5, Dojo, Highcharts, Owl Carousel.}
+	\end{cventryparagraph}}
+	
+	\cvskillentry
+	{Cloud and deployment}
+	{\begin{cventryparagraph}
+		\item {OpenShift, Kubernetes, Helm, Kustomize, Azure DevOps, AWS S3, CloudWatch.}
+	\end{cventryparagraph}}
+	
+	\cvskillentry
+	{Databases}
+	{\begin{cventryparagraph}
+		\item {Oracle, PostgreSQL, DB2, MongoDB.}
 	\end{cventryparagraph}}
 	
 	\cvskillentry
 	{Tools}
 	{\begin{cventryparagraph}
-		\item {GIT, SVN, Postman, Fiddler, Tomcat, WebSphere Portal, Eclipse, Netbeans, Visual Studio Code, AWS Cloudwatch, Office Suite, Trello.}
+		\item {Git, Maven, Postman, SonarQube.}
 	\end{cventryparagraph}}
-	
+
 	\cvskillentry
 	{English}
 	{\begin{cventryparagraph}
-		\item {Good knowledge acquired during university and work projects where I could take part in meetings with international clients.}
-		\item {I also got a valuable help from online gaming, especially through direct practice. When meeting players from many different countries, being able to communicate and understand each other is necessary for successful teamwork.}
-	\end{cventryparagraph}}
-	
-	\cvskillentry
-	{Teamwork and communication}
-	{\begin{cventryparagraph}
-		\item {Ability to adapt to team protocols and methodologies, whether agile or waterfall;}
-		\item {capacity to provide and receive constructive feedback;}
-		\item {ability to recognize priorities and organize activities accordingly.}
+		\item {English used in meetings with international clients and for technical documentation.}
 	\end{cventryparagraph}}
 \end{cventries}
-
-%%% CERTIFICATIONS %%%
-\cvsection{Certifications}
-\begin{cvhonors}
-	\cvhonor
-	{AWS Certified Cloud Practitioner}
-	{}
-	{AWS}
-	{October 2022}
-	\cvhonor
-	{Oracle Certified Associate}
-	{}
-	{Oracle}
-	{December 2021}
-	\cvhonor
-	{Java Enterprise course}
-	{}
-	{Consoft}
-	{November 2019}
-	\cvhonor
-	{ECDL Core certification}
-	{}
-	{AICA}
-	{November 2009}
-\end{cvhonors}
 
 %%% PRIVACY %%%
 \makecvfooter

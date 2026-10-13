@@ -21,6 +21,9 @@
 }
 \ProcessOptions\relax
 \LoadClass{article}
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\emergencystretch=2em
 
 
 %-------------------------------------------------------------------------------
@@ -229,7 +232,7 @@
 % For elements of honor
 \newcommand*{\honortitlestyle}[1]{{\fontsize{10pt}{1em}\bodyfont\color{graytext} #1}}
 \newcommand*{\honorpositionstyle}[1]{{\fontsize{10pt}{1em}\bodyfont\bfseries\color{darktext} #1}}
-\newcommand*{\honordatestyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\color{graytext} #1}}
+\newcommand*{\honordatestyle}[1]{\entrydatestyle{#1}}
 \newcommand*{\honorlocationstyle}[1]{{\fontsize{10pt}{1em}\bodyfontlight\color{awesome} #1}}
 
 % For elements of skill
@@ -525,13 +528,18 @@
   \end{tabular*}
 }
 
+\newcommand*{\cvprojectheading}[2]{%
+  \textbf{#1}\hfill\entrydatestyle{#2}%
+}
+
 \newcommand*{\cvskillentry}[2]{
-  \setlength\tabcolsep{0pt}
-  \setlength{\extrarowheight}{0pt}
-  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{12.5cm} R{4.5cm}}
-  \entrytitlestyle{#1} \\
-  \multicolumn{2}{L{17cm}}{\descriptionstyle{#2}} \\
-  \end{tabular*}
+  \par
+  \setlength{\parskip}{0pt}
+  \addvspace{2mm}
+  {\raggedright\entrytitlestyle{#1}\par}
+  \vspace{3mm}
+  \descriptionstyle{#2}
+  \par
 }
 
 % Define an environment for cvsubentry
@@ -563,16 +571,17 @@
   \begin{center}
     \setlength\tabcolsep{0pt}
     \setlength{\extrarowheight}{0pt}
-    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{2.5cm} L{12.0cm} R{2.5cm}}
+    \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}} L{1.4cm} L{15.6cm}}
 }{
     \end{tabular*}
   \end{center}
 }
 % Define a line of cv information(honor, award or something else)
-% Usage: \cvhonor{<position>}{<title>}{<location>}{<date>}
+% Usage: \cvhonor{<title>}{<description>}{<institution>}{<date>}
 \newcommand*{\cvhonor}[4]{
-  \honordatestyle{#4} & \honorpositionstyle{#1} \honortitlestyle{#2} & \honorlocationstyle{#3}
-  \\
+  \honordatestyle{#4} & \honorpositionstyle{#1}\honortitlestyle{#2}
+  \ifempty{#3}{}{\honortitlestyle{ --- #3}}
+  \\[1mm]
 }
 
 % Define an environment for cvskill
