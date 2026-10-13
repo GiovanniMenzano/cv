@@ -7,12 +7,22 @@ The tex template is from [Resumake](https://www.resumake.io/), modified with som
 
 The action has been coded starting from the one written by [Jason Zhang](https://medium.com/@jasonzhang02/automating-resumes-with-overleaf-github-and-github-actions-4f131a333939), changed in order to handle multiple pages pdf, multiple cv (in my case I have the Italian and English one) and a few minor changes to update it.
 The Github action basically does the following:
-- imports a couple of standard actions, like checkout@v3 to checkout my repository in the container where it's installed and upload-artifact@v3 to have a copy of the pdf in the workflow and be able to use it later;
+- imports a couple of standard actions, like checkout@v3 to checkout my repository in the container where it's installed and upload-artifact@v4 to have a copy of the pdf in the workflow and be able to use it later;
 - imports xu-cheng/latex-action@v2, customized to use xelatex engine, to actually compile my tex files;
-- imports nanzm/get-time-action@v1.1 to use timestamps on files and releases;
+- generates release dates and timestamps with the system `date` command, using the Europe/Rome time zone;
 - imports softprops/action-gh-release@v1 to create a release and upload my pdf files to it;
-- installs ghostscript to be able to use pdf files with ImageMagick and converts my cv into png, so that I can show a preview into my readme file, as you can see below;
-- finally it pushes the converted files back to the branch, using ad-m/github-push-action@master.
+- installs Poppler and converts the English CV into PNG previews at 225 DPI with `pdftoppm`, keeping the numbered filenames used below;
+- finally it commits the preview images and pushes them back to the branch with Git.
+
+### Workflow dependency changes
+
+The following dependencies were replaced to keep the workflow simpler:
+
+- [`nanzm/get-time-action`](https://github.com/nanzm/get-time-action) was replaced with the system `date` command. One step now generates both release timestamps and dates, using `Europe/Rome` to account for daylight saving time.
+- [`ad-m/github-push-action`](https://github.com/ad-m/github-push-action) was replaced with `git push`. My workflow only pushed to its current branch, no need for external pipelines.
+- Ghostscript and ImageMagick were replaced with Poppler's `pdftoppm` for preview image generation. Doing this I also avoided the ImageMagick policy changes.
+
+`actions/upload-artifact` was also updated from `v3` to `v4` after GitHub retired `v3`.
 <br/>
 
 ![](https://github.com/GiovanniMenzano/cv/blob/main/cv_preview_0.png)
