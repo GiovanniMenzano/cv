@@ -43,6 +43,7 @@ jobs:
       - name: Convert pdf to png
         run: |
           pages=$(pdfinfo cv_en.pdf | awk '/^Pages:/ {print $2}')
+          rm -f -- cv_preview_*.png
           for ((page=1; page<=pages; page++)); do
             pdftoppm -f "$page" -l "$page" -singlefile -r 225 -png cv_en.pdf "cv_preview_$((page - 1))"
           done
@@ -52,7 +53,7 @@ jobs:
         run: |
           git config --local user.email "action[bot]@github.com"
           git config --local user.name "github-actions[bot]"
-          git add *.png
+          git add -A -- 'cv_preview_*.png'
           if git diff --cached --quiet; then
             echo "No preview changes to commit."
           else
