@@ -8,11 +8,11 @@ The tex template is from [Resumake](https://www.resumake.io/), modified with som
 The action has been coded starting from the one written by [Jason Zhang](https://medium.com/@jasonzhang02/automating-resumes-with-overleaf-github-and-github-actions-4f131a333939), changed in order to handle multiple pages pdf, multiple cv (in my case I have the Italian and English one) and a few minor changes to update it.
 The Github action basically does the following:
 - imports a couple of standard actions, like checkout@v3 to checkout my repository in the container where it's installed and upload-artifact@v4 to have a copy of the pdf in the workflow and be able to use it later;
-- imports xu-cheng/latex-action@v2, customized to use xelatex engine, to actually compile my tex files;
+- imports xu-cheng/latex-action@4.1.0, customized to use xelatex engine, to actually compile my tex files;
 - generates release dates and timestamps with the system `date` command, using the Europe/Rome time zone;
-- imports softprops/action-gh-release@v1 to create a release and upload my pdf files to it;
+- imports softprops/action-gh-release@v3.0.3 to create a release and upload my pdf files to it;
 - installs Poppler and converts the English CV into PNG previews at 225 DPI with `pdftoppm`, keeping the numbered filenames used below;
-- finally it commits the preview images and pushes them back to the branch with Git.
+- finally it commits the preview images only when they have changed, then pushes back to the branch with Git.
 
 ### Workflow dependency changes
 

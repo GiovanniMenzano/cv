@@ -9,10 +9,11 @@ jobs:
       - name: Set up git repository
         uses: actions/checkout@v3
       - name: Compile LaTeX document
-        uses: xu-cheng/latex-action@v2
+        uses: xu-cheng/latex-action@4.1.0
         with:
-          root_file: "*.tex"
-          glob_root_file: true
+          root_file: |
+            cv_it.tex
+            cv_en.tex
           latexmk_use_xelatex: true
       - name: Uploading artifact
         uses: actions/upload-artifact@v4
@@ -31,7 +32,7 @@ jobs:
 
       - name: Create release
         id: create_release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v3.0.3
         with:
           name: cv compiled on ${{ steps.time.outputs.date }}
           tag_name: v${{ steps.time.outputs.time }}
@@ -52,6 +53,14 @@ jobs:
           git config --local user.email "action[bot]@github.com"
           git config --local user.name "github-actions[bot]"
           git add *.png
-          git commit -m "[bot] updated preview images."
+          if git diff --cached --quiet; then
+            echo "No preview changes to commit."
+          else
+            diff_status=$?
+            if [ "$diff_status" -ne 1 ]; then
+              exit "$diff_status"
+            fi
+            git commit -m "chore: updated preview images"
+          fi
       - name: Push changes
         run: git push origin "HEAD:${GITHUB_REF}"
