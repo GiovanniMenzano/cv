@@ -72,8 +72,7 @@
   pdfauthor={},
   pdfsubject={},
   pdfkeywords={},
-  colorlinks=false,
-  allbordercolors=white
+  hidelinks
 }
 
 
@@ -204,6 +203,15 @@
 \newcommand*{\honordatestyle}[1]{\entrydatestyle{#1}}
 
 %-------------------------------------------------------------------------------
+%                Commands for personal information
+%-------------------------------------------------------------------------------
+\newcommand*{\name}[2]{\def\@firstname{#1}\def\@lastname{#2}}
+\newcommand*{\email}[1]{\def\@email{#1}}
+\newcommand*{\location}[1]{\def\@location{#1}}
+\newcommand*{\github}[1]{\def\@github{#1}}
+\newcommand*{\linkedin}[1]{\def\@linkedin{#1}}
+
+%-------------------------------------------------------------------------------
 %                Commands for utilities
 %-------------------------------------------------------------------------------
 % Use to align an element of tabular table
@@ -221,6 +229,21 @@
 %-------------------------------------------------------------------------------
 %                Commands for elements of CV structure
 %-------------------------------------------------------------------------------
+% Define a header for CV
+\newcommand*{\makecvheader}{
+  \begin{center}
+    \headerfirstnamestyle{\@firstname} \headerlastnamestyle{\@lastname} \\
+    \vspace{2mm}
+    \headerinfostyle{{\faEnvelope\space\space \@email}\space\space\space |\space\space\space {\faMapMarker\space \@location}} \\[1mm]
+    \headerinfostyle{
+      \upshape
+      \href{https://github.com/\@github}{\faGithubSquare\ GitHub}
+      \quad|\quad
+      \href{https://www.linkedin.com/in/\@linkedin}{\faLinkedinSquare\ LinkedIn}
+    }
+  \end{center}
+}
+
 % Define a footer for CV
 % Usage: \makecvfooter{<left>}{<center>}{<right>}
 \newcommand*{\makecvfooter}[3]{
